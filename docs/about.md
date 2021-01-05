@@ -4,12 +4,8 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
-
-### More Information
-
-A place to include any other types of information that you'd like to include about yourself.
+I'm a Research Scientist at the Department of Primary Industries and Regional Development, Western Australia. My background is in water science, GIS, drones, and machine learning.
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[nicholas.wright@dpird.wa.gov.au](mailto:nicholas.wright@dpird.wa.gov.au)
