@@ -5,8 +5,8 @@
 // IMPORTS
 //
 
-@import "docs/_sas/reset";
-@import "docs/_sas/variables";
+@import "docs/_sass/reset";
+@import "docs/_sass/variables";
 // Syntax highlighting @import is at the bottom of this file
 
 /**************/
@@ -285,5 +285,5 @@ footer {
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
-@import "docs/_sas/highlights";
-@import "docs/_sas/svg-icons";
+@import "docs/_sass/highlights";
+@import "docs/_sass/svg-icons";
