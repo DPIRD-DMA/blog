@@ -71,7 +71,7 @@ kramdown:
 # Set the Sass partials directory, as we're using @imports
 sass:
   style: :expanded # You might prefer to minify using :compressed
-  sass_dir: Blog/docs/_sass
+  sass_dir: _sass
 
 # Use the following plug-ins
 gems:
