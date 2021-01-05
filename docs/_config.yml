@@ -85,5 +85,5 @@ exclude:
   - README.md
   - CNAME
 
-sass:
-    sass_dir: ./_scss
+# sass:
+#     sass_dir: ./_scss
