@@ -4,7 +4,7 @@ title: Batch compressing raster files
 ---
 When I’m finished with a project, I often have a large amount of raster files on disk which I need to archive for later use. Depending on the structure of the data, it can be highly advantageous to compress the data before storing it away. I have put together some Python code in a Jupyter Notebook to compress all raster files in a folder to streamline the task.
 
-<a class="jn" href="https://github.com/DPIRD-DMA">link to notebook</a>
+<a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Batch%20compressing%20raster%20files.ipynb">link to notebook</a>
 
 The script starts by importing a bunch of modules, “os” for manipulating file paths, “glob” for grabbing a list of files in a folder, “Pool” for multiprocessing, “tqdm” for displaying a loading bar, “Path” for making folders and lastly “gdal” for raster manipulation.
 
@@ -64,4 +64,4 @@ Keep in mind that depending on your data, storage medium and CPU power you may b
 
 If you are wanting to compress RGB rasters and you are fine with lossy compression you may also want to check out “JPEG” compression (yes you can have .jpg compression within a .tif). This will massively reduce the image size with a slight loss of detail which may be worthwhile in some cases.
 
-<a class="jn" href="https://github.com/DPIRD-DMA">link to notebook</a>
+<a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Batch%20compressing%20raster%20files.ipynb">link to notebook</a>

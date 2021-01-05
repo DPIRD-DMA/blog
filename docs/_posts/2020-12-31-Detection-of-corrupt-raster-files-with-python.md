@@ -4,7 +4,7 @@ title: Detection of corrupt raster files with python
 ---
 Have you ever needed to find a corrupt GeoTIFF file amongst a large amount of valid files? I recently had this issue and put together a useful little python script to do the work for me. The script is written within a jupyter notebook so you can run it interactively.
 
-<a class="jn" href="https://github.com/DPIRD-DMA">link to notebook</a>
+<a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Detection%20of%20corrupt%20raster%20files.ipynb">link to notebook</a>
 
 Start by importing the “os” module for its ability to join file paths, search for files and remove files. Import “Pool” from the “multiprocessing” library for parallelisation. The “tqdm” module is imported to show a loading bar to indicate progress, lastly import ‘rasterio’ to open and validate the raster files.
 {% highlight python %}
@@ -82,4 +82,4 @@ for img in currupt_images:
 {% endhighlight %}
 
 
-<a class="jn" href="https://github.com/DPIRD-DMA">link to notebook</a>
+<a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Detection%20of%20corrupt%20raster%20files.ipynb">link to notebook</a>
