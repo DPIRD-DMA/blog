@@ -19,7 +19,7 @@ The second cell defines the formats of interest as a tuple and the input directo
 {% highlight python %}
 formats = ('.tif','.tiff','.jpg','.png')
 
-input_folder = '/media/nick/2TB Working/Projects/test'
+input_folder = '/media/nick/2TB Working 4/Dataset/VIVID 10m'
 {% endhighlight %}
 
 <!-- ![_config.yml]({{ site.baseurl }}/images/image4.png) -->

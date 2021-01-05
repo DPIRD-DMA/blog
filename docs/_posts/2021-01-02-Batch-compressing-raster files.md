@@ -14,16 +14,16 @@ import glob
 from multiprocessing import Pool
 from tqdm.auto import tqdm
 from pathlib import Path
-from osgeo import gdal,osr
+from osgeo import gdal
 {% endhighlight %}
 
 You need to specify the folder which contains the uncompressed rasters, and the folder which will contain the compressed rasters. The script will then use glob to search the “tif_dir” for rasters ending with “.tif” and place the paths to these files in a list called list_tifs.
 
 {% highlight python %}
-tif_dir = '/Users/nick/Desktop/tif full'
+tif_dir = '/home/nick/Desktop/full'
 
-export_dir = '/Users/nick/Desktop/tif comp'
-Path(dest_dir).mkdir(parents=True, exist_ok=True)
+export_dir = '/home/nick/Desktop/full comp'
+Path(export_dir).mkdir(parents=True, exist_ok=True)
 
 list_tifs = glob.glob(tif_dir+"/*.tif")
 print('Image count', len(list_tifs))
@@ -49,14 +49,15 @@ def compress_tifs(tif):
     file_name = os.path.basename(tif)
     export_path = os.path.join(export_dir,file_name)
 
-    if not os.path.isfile(save_path):
+    if not os.path.isfile(export_path):
         gdal.Translate(export_path, tif, options=topts)
 {% endhighlight %}
 
 Finally we call “tqdm(Pool().imap()” which runs the compression function using multiprocessing and displays a handy loading bar so you can see your progress.
 
 {% highlight python %}
-tqdm(Pool().imap(compress_tifs, list_tifs), total=len(list_tifs))
+with Pool() as p:
+    list(tqdm(p.imap(compress_tifs, list_tifs), total=len(list_tifs)))
 {% endhighlight %}
 
 Keep in mind that depending on your data, storage medium and CPU power you may be better off limiting the amount of simultaneous processes. You can experiment with this by placing the number of desired processes within the brackets of the “Pool()” call. This can be particularly useful if you are reading from, or exporting to, a hard drive as having too many processes may slow you down by making the drive spend more time moving around to find the location of your data and less time actually reading it.
