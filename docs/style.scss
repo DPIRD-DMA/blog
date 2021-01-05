@@ -285,5 +285,5 @@ footer {
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
-@import "docs/_sass/highlights";
-@import "docs/_sass/svg-icons";
+@import "/_sass/_highlights.scss";
+@import "/_sass/_svg-icons.scss";
