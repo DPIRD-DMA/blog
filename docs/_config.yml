@@ -84,3 +84,6 @@ exclude:
   - LICENSE
   - README.md
   - CNAME
+
+sass:
+    sass_dir: ./_scss
