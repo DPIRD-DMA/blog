@@ -56,7 +56,7 @@ baseurl: ""
 permalink: /:title/
 
 # The release of Jekyll Now that you're using
-version: 4.2.0
+version: v1.2.0
 
 # Jekyll 3 now only supports Kramdown for Markdown
 kramdown:
@@ -71,6 +71,7 @@ kramdown:
 # Set the Sass partials directory, as we're using @imports
 sass:
   style: :expanded # You might prefer to minify using :compressed
+  sass_dir: Blog/docs/_sass
 
 # Use the following plug-ins
 gems:
@@ -84,6 +85,3 @@ exclude:
   - LICENSE
   - README.md
   - CNAME
-
-# sass:
-#     sass_dir: ./_scss
