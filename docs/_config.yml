@@ -14,11 +14,7 @@ avatar: https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/je
 #
 # Flags below are optional
 #
-# Set the Sass partials directory, as we're using @imports
-sass:
-  style: :expanded # You might prefer to minify using :compressed
-  sass_dir: Blog/docs/_sass
-  
+
 # Includes an icon in the footer for each username you enter
 footer-links:
   dribbble:
@@ -72,7 +68,10 @@ kramdown:
     # Use existing pygments syntax highlighting css
     css_class: 'highlight'
 
-
+# Set the Sass partials directory, as we're using @imports
+sass:
+  style: :expanded # You might prefer to minify using :compressed
+  sass_dir: Blog/docs/_sass
 
 # Use the following plug-ins
 gems:
