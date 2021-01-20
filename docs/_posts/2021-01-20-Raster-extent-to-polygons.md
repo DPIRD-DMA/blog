@@ -4,7 +4,7 @@ title: Raster extent to polygons
 ---
 Recently, I had the need to visualise the extent of a large number of DEM files. I initially tried loading them into QGIS but this was very clunky and slow. I only wanted to see the extent of the files so I attempted to use the inbuilt QGIS function ‘Extract layer extent’ and run it as a batch process. Unfortunately the batch processing window did not appreciate me trying to load a couple hundred large DEM files and it promptly crashed. So I put a Jupyter Notebook together to do the work for me. This notebook will crawl all files within a directory and all subdirectories and extract the bounding geometry for each file. These bounds are then grouped by projection and saved out as a geopackage ready to be viewed in QGIS or alike.
 
-<a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Batch%20compressing%20raster%20files.ipynb">link to notebook</a>
+<a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Raster%20extent%20to%20polygon.ipynb">link to notebook</a>
 
 
 The notebook starts by importing the necessary libraries, ‘os’ for file path manipulation and finding the rasters, ‘rasterio’ for extracting the raster bounds, ‘shapely’ for creating polygon, ‘pandas’ and ‘geopandas’ for dealing with collections of polygons, ‘multiprocessing’ for speeding things up and ‘tqdm’ for displaying loading bars.
@@ -91,4 +91,4 @@ You should now have one or more .gpkg files within the directory above your inpu
 
 Note that python does not do a good job of memory management, so keep an eye on your RAM usage if you are processing large files. If you manage to run out of free RAM, the notebook will probably crash and may lock up your computer for a while. To avoid this happening you can limit the amount of files which are allowed to be open at the same time by placing a number (smaller than your computer’s number of threads) within the brackets of ‘Pool()’. This will limit the number of simultaneous processes, this number defaults to your computer’s thread count.
 
-<a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Batch%20compressing%20raster%20files.ipynb">link to notebook</a>
+<a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Raster%20extent%20to%20polygon.ipynb">link to notebook</a>
