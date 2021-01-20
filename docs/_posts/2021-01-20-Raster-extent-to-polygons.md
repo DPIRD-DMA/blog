@@ -28,7 +28,7 @@ export_dir = os.path.dirname(input_dir)
 export_file_name = os.path.basename(input_dir)
 {% endhighlight %}
 
-Now the notebook will pass the ‘input_dir’ to os.walk which will search your directory for all files with the extensions specified above. The result of this will be pushed into the ‘raster_list’ array.  
+Now the notebook will pass the ‘input_dir’ to os.walk which will search your directory for all files with the extensions specified above. The result of this will be pushed into the ‘raster_list’.  
 
 {% highlight python %}
 raster_list = []
@@ -59,7 +59,7 @@ def index(raster):
 
 
 
-The notebook now uses ‘Pool()’ to run the above function with multiple processes. Within this, ‘tqdm’ is used to display a loading bar, the result is a list of dictionaries within variable ‘polygons’.
+The notebook now uses ‘Pool()’ to run the above function with multiple processes. Within this, ‘tqdm’ is used to display a loading bar, the result is a list of dictionaries within variable the ‘polygons’.
 
 {% highlight python %}
 with Pool() as p:
