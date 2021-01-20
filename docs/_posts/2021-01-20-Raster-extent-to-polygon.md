@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Raster extent to polygons
+title: Raster extent to polygon
 ---
 Recently, I had the need to visualise the extent of a large number of DEM files. I initially tried loading them into QGIS but this was very clunky and slow. I only wanted to see the extent of the files so I attempted to use the inbuilt QGIS function ‘Extract layer extent’ and run it as a batch process. Unfortunately the batch processing window did not appreciate me trying to load a couple hundred large DEM files and it promptly crashed. So I put a Jupyter Notebook together to do the work for me. This notebook will crawl all files within a directory and all subdirectories and extract the bounding geometry for each file. These bounds are then grouped by projection and saved out as a geopackage ready to be viewed in QGIS or alike.
 
