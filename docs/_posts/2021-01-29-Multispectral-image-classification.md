@@ -85,7 +85,7 @@ def tensor_to_np_3b(tensor, first_channel = 0):
     return tensor[0+first_channel:3+first_channel].permute(1, 2, 0).numpy()
 {% endhighlight %}
 
-This next cell uses the fastai function ‘get_files()’ to retrieve a list of files with the training data files. We will use this list later to test our augmentations.
+This next cell uses the fastai function ‘get_files()’ to retrieve a list of the training data files. We will use this list later to test our augmentations.
 
 {% highlight python %}
 # grab all tif files in 'path'
@@ -185,14 +185,14 @@ batch = dl.one_batch()
 print(batch[0].shape, batch[1])
 {% endhighlight %}
 
-The next few cells perform a  check. The first one prints the channel count.
+The next few cells perform a check. The first one prints the channel count.
 
 {% highlight python %}
 channel_count= batch[0].shape[1]
 print('Channel count =',channel_count)
 {% endhighlight %}
 
-The second one prints one image from the validation image set.
+The next one prints one image from the validation image set.
 
 {% highlight python %}
 # grab a validation tensor, place it on the CPU then show it, this should not have augmentations
@@ -204,7 +204,7 @@ plt.figure()
 show_tensor(valid_tensor, first_channel =3)
 {% endhighlight %}
 
-Thirdly, the notebook prints an image from the training set.
+The last one prints an image from the training set.
 
 {% highlight python %}
 # show one tensor from training set with augmentations
@@ -223,8 +223,6 @@ learn = cnn_learner(dl, resnet18, n_in=channel_count, pretrained=True, metrics=e
 {% endhighlight %}
 
 The extra channels that we just told fastai to expect are not pretrained, all the weights have all been set to a value of ‘0’. You can see this yourself in the fastai <a href="https://github.com/fastai/fastai/blob/master/fastai/vision/learner.py">code here</a>. To get around this, the notebook duplicates the pretrained RGB weights into our newly created input channels. This process is started by getting a reference to the input layer in the cell below.
-
-
 
 {% highlight python %}
 # grab a reference to the first layer of the model, the layer we need to edit to pull over the pretrained weights
