@@ -6,15 +6,11 @@ Heads up, today we are jumping into the deep end of Deep learning with the fasta
 
 If you're in the worlds of remote sensing and deep learning you have no doubt run into the issue of wanting to use pretrained models but also wanting to use multispectral imagery. Unfortunately there are two major issues when combining these. Firstly, pretrained models expect you are going to use RGB imagery and secondly (depending on your library of choice), the built-in image augmentations may also expect RGB imagery. It turns out neither of these issues are show stoppers, they just required a couple days of experimentation to solve.
 
-
-
-
 In the <a href="https://youtu.be/cX30jxMNBUw?t=5065">fastai 2020 Lesson 6 tutorial</a>, Jeremy Howard was asked about using pretrained models for four channel images. Jeremy’s response was that this ‘should be pretty much automatic’. This was exactly what I was after so I went digging and found <a href="https://towardsdatascience.com/how-to-implement-augmentations-for-multispectral-satellite-images-segmentation-using-fastai-v2-and-ea3965736d1">this tutorial</a> by Maurício Cordeiro. This was very helpful, however I only wanted to do image classification (not segmentation) and I wanted to use pretrained weights for my additional channels, unlike the tutorial which initialised the additional channels with weights of ‘0’, which is the fastai default behavior.
 
 This post will walk through some of the pain-points of multispectral imagery and my work-arounds for dealing with these issues. In particular this covers creating a custom data loader, modifying a pretrained model and sorting out multispectral augmentations using the fastai (v2) deep learning library for image classification.
 
-<a class="jn" href="updatethis......">link to notebook</a>
-
+<a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Multispectral%20image%20classification.ipynb">link to notebook</a>
 
 The notebook starts by importing the necessary libraries. The only slightly uncommon libraries here are ‘rasterio’, which is a relatively user friendly interface for ‘GDAL’ raster operations, and ‘albumentations’, which is used for multispectral image augmentations.
 
@@ -268,7 +264,4 @@ learn.lr_find()
 learn.fit_one_cycle(1,1e-2)
 {% endhighlight %}
 
-
-
-
-<a class="jn" href="updatethis......">link to notebook</a>
+<a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Multispectral%20image%20classification.ipynb">link to notebook</a>
