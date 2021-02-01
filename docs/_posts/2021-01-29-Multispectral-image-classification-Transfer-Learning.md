@@ -2,13 +2,13 @@
 layout: post
 title: Multispectral image classification with Transfer Learning
 ---
-Heads up, today we are jumping into the deep end of Deep learning with the fastai library, if you haven't spent much time with fastai this walk through may be a little full on.
+Heads up, today we are jumping into the deep end of Deep learning with the fastai library. If you haven't spent much time with fastai this walk through may be a little full on.
 
-If you're in the worlds of remote sensing and deep learning you have no doubt run into the issue of wanting to use Transfer learning but also wanting to use multispectral imagery. Unfortunately there are two major issues when combining these. Firstly, pretrained models (used for Transfer learning) expect you are going to use RGB imagery and secondly (depending on your library of choice), the built-in image augmentations may also expect RGB imagery. It turns out neither of these issues are show stoppers, they just required a couple days of experimentation and some help from the <a href="https://forums.fast.ai/">fastai forum</a> (specifically Malcolm McLean) to solve.
+If you're in the worlds of remote sensing and deep learning, you have no doubt run into the issue of wanting to use Transfer learning but also wanting to use multispectral imagery. Unfortunately there are two major issues when combining these. Firstly, pretrained models (used for Transfer learning) expect that you are going to use RGB imagery and secondly (depending on your library of choice), the built-in image augmentations may also expect RGB imagery. It turns out neither of these issues are showstoppers, they just required a couple days of experimentation and some help from the <a href="https://forums.fast.ai/">fastai forum</a> (specifically Malcolm McLean) to solve.
 
 In the <a href="https://youtu.be/cX30jxMNBUw?t=5065">fastai 2020 Lesson 6 tutorial</a>, Jeremy Howard was asked about using pretrained models for four channel images. Jeremy’s response was that this ‘should be pretty much automatic’. This was exactly what I was after so I went digging and found <a href="https://towardsdatascience.com/how-to-implement-augmentations-for-multispectral-satellite-images-segmentation-using-fastai-v2-and-ea3965736d1">this tutorial</a> by Maurício Cordeiro. This was very helpful, however I only wanted to do image classification (not segmentation) and I wanted to use pretrained weights for my additional channels, unlike the tutorial which initialised the additional channels with weights of ‘0’, which is the fastai default behavior.
 
-This post will walk through some of the pain-points of multispectral imagery and my work-arounds for dealing with these issues. In particular this covers creating a custom data loader, modifying a pretrained model and sorting out multispectral augmentations using the fastai (v2) deep learning library for image classification.
+This post will walk through some of the pain-points of multispectral imagery and my work-arounds for dealing with these issues. In particular, this covers creating a custom data loader, modifying a pretrained model and sorting out multispectral augmentations using the fastai (v2) deep learning library for image classification.
 
 <a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Multispectral%20image%20classification%20with%20Transfer%20learning.ipynb">link to notebook</a>
 
@@ -25,7 +25,7 @@ from fastai.vision.all import *
 import albumentations as A
 {% endhighlight %}
 
-The expected data structure for the notebook is multispectral ‘.tif’ files in folders denoting the class name. Just point the notebook at the parent folder of your data. This cell also adds a folder named ‘models’ which will contain our finished models.
+The expected data structure for the notebook is multispectral ‘.tif’ files in folders denoting the class name. Just point the notebook at the parent folder of the data. This cell also adds a folder named ‘models’ which will contain our finished models.
 
 {% highlight python %}
 #  this path should contain folders of images of each class
@@ -35,7 +35,7 @@ model_path = os.path.join(path,'models')
 Path(model_path).mkdir(parents=True, exist_ok=True)
 {% endhighlight %}
 
-The next cell sets the image size; all your images will be resized to a square with this many pixels on each side. This is useful if your data is inconsistently sized or if you just want to down sample your input data to speed up training. The batch size is also set at this point.
+The next cell sets the image size; all the images will be resized to a square with this many pixels on each side. This is useful if the data is inconsistently sized or if you just want to down sample your input data to speed up training. The batch size is also set at this point.
 
 {% highlight python %}
 # set image size
@@ -85,7 +85,7 @@ def tensor_to_np_3b(tensor, first_channel = 0):
     return tensor[0+first_channel:3+first_channel].permute(1, 2, 0).numpy()
 {% endhighlight %}
 
-This next cell uses the fastai function ‘get_files()’ to retrieve a list of the training data files. We will use this list later to test our augmentations.
+This next cell uses the fastai function ‘get_files()’ to retrieve a list of the training data files. This list will be used later to test the augmentations.
 
 {% highlight python %}
 # grab all tif files in 'path'
@@ -94,7 +94,7 @@ print(len(all_images),'images')
 print(all_images[0])
 {% endhighlight %}
 
-At this point the notebook opens a sample of your data to make sure everything is working as expected. The ‘show_tensor()’ function will display three channels of a tensor as an image. In my particular example, I’m dealing with six channel imagery which is actually two stacked RGB images. The notebook is displaying the first three channels as an image and the last three as another image.
+At this point, the notebook opens a sample of the data to make sure everything is working as expected. The ‘show_tensor()’ function will display three channels of a tensor as an image. In my particular example, I’m dealing with six channel imagery which is actually two stacked RGB images. The notebook is displaying the first three channels as an image and the last three as another image.
 
 {% highlight python %}
 # try opening an image and displaying channels 0,1,2 anf 3,4,5
@@ -109,7 +109,7 @@ plt.figure()
 img = show_tensor(input_image,first_channel=3)
 {% endhighlight %}
 
-If the images above look as you expect, your data structure is probably correct and you can move on to setting up some augmentations. The built in fastai image augmentations will no longer work as they expect three channel images. To work around this, this notebook uses the albumentations library instead. Albumentations has implemented augmentations which (mostly) work with multispectral imagery. The list of transforms chosen is roughly based on the default fastai image augmentations as they have been proven to be a good starting point. Keep in mind that these augmentations are performed on your CPU before each epoch, so you may experience a slow down if you add many of them.
+If the images above look as expected, the data structure is probably correct and you can move on to setting up some augmentations. The built in fastai image augmentations will no longer work as they expect three channel images. To work around this, this notebook uses the ‘albumentations’ library instead. ‘Albumentations’ has implemented augmentations which (mostly) work with multispectral imagery. The list of transforms chosen is roughly based on the default fastai image augmentations as they have been proven to be a good starting point. Keep in mind that these augmentations are performed on your CPU before each epoch, so you may experience a slow down in training if you add many of them.
 
 {% highlight python %}
 # we can't use the built in fastai augmentations as they expect 3 channel images so we are using Albumentations instead
@@ -147,7 +147,7 @@ def aug_tfm(tensor):
     return tensor
 {% endhighlight %}
 
-Finally, the ‘multi_tfm()’ function is created. This uses ‘RandTransform’ to tell fastai to only apply our augmentations to our training images and not the validation set.
+Finally, the ‘multi_tfm()’ function is created. This uses ‘RandTransform’ to tell fastai to only apply our augmentations to the training images and not the validation set.
 
 {% highlight python %}
 multi_tfm = RandTransform(enc=aug_tfm, p=1)
@@ -171,7 +171,7 @@ fig.set_size_inches(cols*4, rows*4)
 plt.show()
 {% endhighlight %}
 
-Assuming everything is working, we can now setup the fastai ‘DataBlock’. This cell sets up two blocks; first, a ‘TransformBlock’, which will contain our images, and second, a ‘CategoryBlock’, which will contain our labels. The fastai function ‘get_image_files’ is used to find the paths to all of the images. The ‘get_labels’ function is used to extract the image class from its path. The fastai function ‘RandomSplitter’ is used to split the data into train and validation sets, with a static seed to always get the same split (so we can compare different runs). Lastly, the augmentations are passed in and the ‘DataBlock’ is now completed.
+Assuming everything is working, you can now setup the fastai ‘DataBlock’. This cell sets up two blocks; first, a ‘TransformBlock’, which will contain the images, and second, a ‘CategoryBlock’, which will contain the labels. The fastai function ‘get_image_files’ is used to find the paths to all of the images. The ‘get_labels’ function is used to extract the image class from its path. The fastai function ‘RandomSplitter’ is used to split the data into train and validation sets, with a static seed to always get the same split (so you can compare different runs). Lastly, the augmentations are passed in and the ‘DataBlock’ is now completed.
 
 {% highlight python %}
 db = DataBlock(blocks=(TransformBlock(open_img), CategoryBlock),
@@ -222,7 +222,7 @@ The notebook now sets up a learner like normal, however the ’n_in=' variable i
 learn = cnn_learner(dl, resnet18, n_in=channel_count, pretrained=True, metrics=error_rate).to_fp16()
 {% endhighlight %}
 
-The extra channels that we just told fastai to expect are not pretrained, all the weights have all been set to a value of ‘0’. You can see this yourself in the fastai <a href="https://github.com/fastai/fastai/blob/master/fastai/vision/learner.py">code here</a>. To get around this, the notebook duplicates the pretrained RGB weights into our newly created input channels. This process is started by getting a reference to the input layer in the cell below.
+The extra channels that you just told fastai to expect are not pretrained, all the weights have all been set to a value of ‘0’. You can see this yourself in the fastai <a href="https://github.com/fastai/fastai/blob/master/fastai/vision/learner.py">code here</a>. To get around this, the notebook duplicates the pretrained RGB weights into the newly created input channels. This process is started by getting a reference to the input layer in the cell below.
 
 {% highlight python %}
 # grab a reference to the first layer of the model, the layer we need to edit to pull over the pretrained weights
@@ -233,7 +233,7 @@ l1_weights = layer1.weight
 print(l1_weights.shape)
 {% endhighlight %}
 
-Now that the notebook has a reference to the first layer it just duplicates the RGB weights to all the additional channels and then reduces all the weights by the channel count ratio, to keep the total value of the input layer the same.
+Now that the notebook has a reference to the first layer, it just duplicates the RGB weights to all the additional channels and then reduces all the weights by the channel count ratio to keep the total value of the input layer the same.
 
 {% highlight python %}
 pretrained_channel_count = 3
