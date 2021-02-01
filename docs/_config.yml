@@ -1,6 +1,13 @@
 #
 # This file contains configuration flags to customize your site
 #
+# for seo
+
+title: The DPIRD DMA Blog
+
+url: https://dpird-dma.github.io/blog/
+
+author: Nick Wright
 
 # Name of your site (displayed in the header)
 name: Nick Wright
@@ -76,6 +83,7 @@ sass:
 gems:
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
   - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
+  - jekyll-seo-tag #https://github.com/barryclark/jekyll-now/issues/61
 
 # Exclude these files from your production _site
 exclude:
