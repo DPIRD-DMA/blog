@@ -6,7 +6,7 @@ title: Applying an Azure AutoML model to raster GIS data
 
 This is a walk through of a Jupyter Notebook I created to run a vegetation classification model over the Nullarbor Land Conservation District. This notebook assumes you are trying to execute your own geographic classification task and that you already have a trained model from Azure AutoML. It is also assumed that your input raster data is already prepared and all your data has the same extent, pixel size and projection. For my particular application I was using 100 raster layers at 80m resolution, which covers 150,000 km2 and equates to about 20,000,000 pixels in total.
 
-<a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Point%20sampling%20multiple%20raster%20files.ipynb">link to notebook</a>
+<a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Applying%20an%20Azure%20AutoML%20model%20to%20raster%20GIS%20data.ipynb">link to notebook</a>
 
 The onerous but necessary setup:
 Warning, these setup steps are likely to change over time as Azure updates their dependencies. These particular instructions were valid as of 28 April 2021.
@@ -310,4 +310,4 @@ with rasterio.Env():
 
 You should now be able to navigate to the export location and drag the geotiff into QGIS to visualise it, hopefully it looks reasonable!
 
-<a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Point%20sampling%20multiple%20raster%20files.ipynb">link to notebook</a>
+<a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Applying%20an%20Azure%20AutoML%20model%20to%20raster%20GIS%20data.ipynb">link to notebook</a>
