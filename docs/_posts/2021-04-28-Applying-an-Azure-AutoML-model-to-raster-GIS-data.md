@@ -31,7 +31,7 @@ cd /
 jupyter notebook
 
 The ‘fun’ part:
-After running the last command above, you should see a web browser window open. Within this window, navigate to the Jupyter Notebook that you have downloaded from here {link}.
+After running the last command above, you should see a web browser window open. Within this window, navigate to the Jupyter Notebook that you have downloaded from here <a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Applying%20an%20Azure%20AutoML%20model%20to%20raster%20GIS%20data.ipynb">here</a>.
 
 Try running the first cell which imports all the necessary libraries. If this executes correctly your environment is probably set up correctly and you can move on to the second cell.
 
