@@ -2,8 +2,6 @@
 layout: post
 title: Applying an Azure AutoML model to raster GIS data
 ---
-
-
 This is a walk through of a Jupyter Notebook I created to run a vegetation classification model over the Nullarbor Land Conservation District. This notebook assumes you are trying to execute your own geographic classification task and that you already have a trained model from Azure AutoML. It is also assumed that your input raster data is already prepared and all your data has the same extent, pixel size and projection. For my particular application I was using 100 raster layers at 80m resolution, which covers 150,000 km2 and equates to about 20,000,000 pixels in total.
 
 <a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Applying%20an%20Azure%20AutoML%20model%20to%20raster%20GIS%20data.ipynb">link to notebook</a>
@@ -58,6 +56,7 @@ from inference_schema.schema_decorators import input_schema, output_schema
 from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
 from inference_schema.parameter_types.pandas_parameter_type import PandasParameterType
 {% endhighlight %}
+
 The second cell requires you to input the paths to your raster dataset, the raster file format, your desired location of the output raster file and the path to the Azure model file.
 
 {% highlight python %}
@@ -72,7 +71,6 @@ model_path = '/media/nick/2TB Working 2/Projects/Nulla ML test/DL model v5 DL/Au
 {% endhighlight %}
 
 The third cell performs some sanity checks on the above data and lets you know if it sees any issues.
-
 
 {% highlight python %}
 print("Raster folder valid?",os.path.isdir(raster_folder))
@@ -166,7 +164,6 @@ Joined_data
 It is now time to actually replace the NaN values with something that the model will accept. The solution here is to simply replace every NaN value with the median for that column/raster layer. You could also use mean, however this could create problems if you have a column of integers or booleans.
 This step should be possible with a one-liner, however I found this to use a lot of RAM so instead a for loop is used.
 
-
 {% highlight python %}
 # replace all nan values with column median
 # you should be able to do this in one step but it uses too much RAM, so a loop instead
@@ -178,7 +175,6 @@ joined_data
 {% endhighlight %}
 
 Now that the mask column is completed, this cell extracts the mask as a list and then removes the ‘mask’ and the ‘nan_count’ columns from the dataframe. This is done  to prevent the model from returning an error if it passes extra columns that it was not trained on.
-
 
 {% highlight python %}
 # get a list of the mask pixels
@@ -197,7 +193,6 @@ input_sample = pd.DataFrame({"Clim_etaaann": pd.Series([0], dtype="int64"), "Cli
 {% endhighlight %}
 
 The next two cells check that the raster dataframe and the ‘input_sample’ have the same column headings. Again, this is critical, otherwise the model will throw an error.
-
 
 {% highlight python %}
 # columns in training data which are not in your raster data
@@ -276,18 +271,16 @@ raster_meta['nodata'] = export_raster_nan
 # set LZW compression to reduce file size
 raster_meta['compress'] = 'LZW'
 raster_meta
-{% highlight python %}
+{% endhighlight %}
 
 Now that the metadata has been extracted, the prediction list can be reshaped into a 2D array to match the input rasters.
-
-
 
 {% highlight python %}
 # get dataseries of the predicted numbers including the NaN mask
 pred_nums_masked = pred_df['pred_nums']
 # reshape the predictions list to the same as input raster
 preds_reshaped = np.array(pred_nums_masked).reshape(raster_shape)
-{% highlight python %}
+{% endhighlight %}
 
 Now that the array has been reshaped, it can be visualized with ‘matplotlib’. This is a little more complicated than normal because we have a no data value, so ‘np.ma.masked_where’ is used to manually set the ‘export_raster_nan’ value to white.
 
@@ -297,7 +290,7 @@ cmap = plt.cm.viridis
 cmap.set_bad(color='white')
 plt.imshow(np.ma.masked_where(preds_reshaped == export_raster_nan, preds_reshaped), interpolation='nearest',cmap=cmap)
 plt.show()
-{% highlight python %}
+{% endhighlight %}
 
 The final cell simply exports out the 2D array to the location defined by ‘output_raster_file’.
 
@@ -306,7 +299,7 @@ The final cell simply exports out the 2D array to the location defined by ‘out
 with rasterio.Env():
     with rasterio.open(output_raster_file, 'w', **raster_meta) as dst:
         dst.write(preds_reshaped.astype(data_dtype), 1)
-{% highlight python %}
+{% endhighlight %}
 
 You should now be able to navigate to the export location and drag the geotiff into QGIS to visualise it, hopefully it looks reasonable!
 
