@@ -35,7 +35,7 @@ After running the last command above, you should see a web browser window open. 
 
 Try running the first cell which imports all the necessary libraries. If this executes correctly your environment is probably set up correctly and you can move on to the second cell.
 
-{% highlight python %}
+```python
 # system  
 import os
 from tqdm.auto import tqdm
@@ -55,7 +55,7 @@ from azureml.telemetry import INSTRUMENTATION_KEY
 from inference_schema.schema_decorators import input_schema, output_schema
 from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
 from inference_schema.parameter_types.pandas_parameter_type import PandasParameterType
-{% endhighlight %}
+```
 
 The second cell requires you to input the paths to your raster dataset, the raster file format, your desired location of the output raster file and the path to the Azure model file.
 
