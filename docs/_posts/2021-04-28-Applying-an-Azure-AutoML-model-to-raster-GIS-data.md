@@ -15,27 +15,33 @@ Before moving ahead, it is necessary to set up a conda environment with the spec
 
 Next, open a terminal and ‘cd’ into your extracted folder, then run the following command to build your environment:
 
+```console
 conda env create -f conda_env_v_1_0_0.yml
+```
 
-Your environment now contains all of the Azure specific ML libraries, however you still need to update some of packages and add a couple extra libraries. Run the following commands one by one to finish off the install:
+Your environment now contains all of the Azure specific ML libraries, however you still need to update some of packages and add a couple extra libraries.
+Run the following commands one by one to finish off the install:
 
+```console
 conda activate project_environment
 conda install -c conda-forge rasterio
 conda install -c conda-forge tqdm
 conda install -c conda-forge jupyter
 conda update --all
-
+```
 Your environment is now set up. The following commands will change your current directory back to the root directory and then open Jupyter.
 
+```console
 cd /
 jupyter notebook
+```
 
 The ‘fun’ part:
 After running the last command above, you should see a web browser window open. Within this window, navigate to the Jupyter Notebook that you have downloaded from here <a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Applying%20an%20Azure%20AutoML%20model%20to%20raster%20GIS%20data.ipynb">here</a>.
 
 Try running the first cell which imports all the necessary libraries. If this executes correctly your environment is probably set up correctly and you can move on to the second cell.
 
-```python
+{% highlight python %}
 # system  
 import os
 from tqdm.auto import tqdm
@@ -55,7 +61,7 @@ from azureml.telemetry import INSTRUMENTATION_KEY
 from inference_schema.schema_decorators import input_schema, output_schema
 from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
 from inference_schema.parameter_types.pandas_parameter_type import PandasParameterType
-```
+{% endhighlight %}
 
 The second cell requires you to input the paths to your raster dataset, the raster file format, your desired location of the output raster file and the path to the Azure model file.
 
