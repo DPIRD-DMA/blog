@@ -15,26 +15,26 @@ Before moving ahead, it is necessary to set up a conda environment with the spec
 
 Next, open a terminal and ‘cd’ into your extracted folder, then run the following command to build your environment:
 
-```console
+{% highlight console %}
 conda env create -f conda_env_v_1_0_0.yml
-```
+{% endhighlight %}
 
 Your environment now contains all of the Azure specific ML libraries, however you still need to update some of packages and add a couple extra libraries.
 Run the following commands one by one to finish off the install:
 
-```console
+{% highlight console %}
 conda activate project_environment
 conda install -c conda-forge rasterio
 conda install -c conda-forge tqdm
 conda install -c conda-forge jupyter
 conda update --all
-```
+{% endhighlight %}
 Your environment is now set up. The following commands will change your current directory back to the root directory and then open Jupyter.
 
-```console
+{% highlight console %}
 cd /
 jupyter notebook
-```
+{% endhighlight %}
 
 The ‘fun’ part:
 After running the last command above, you should see a web browser window open. Within this window, navigate to the Jupyter Notebook that you have downloaded from here <a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Applying%20an%20Azure%20AutoML%20model%20to%20raster%20GIS%20data.ipynb">here</a>.
