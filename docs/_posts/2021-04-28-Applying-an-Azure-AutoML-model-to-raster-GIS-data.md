@@ -7,6 +7,7 @@ This is a walk through of a Jupyter Notebook I created to run a vegetation class
 <a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Applying%20an%20Azure%20AutoML%20model%20to%20raster%20GIS%20data.ipynb">link to notebook</a>
 
 The onerous but necessary setup:
+
 Warning, these setup steps are likely to change over time as Azure updates their dependencies. These particular instructions were valid as of 28 April 2021.
 
 If you haven't already, go ahead and download your model from Azure. You should receive a zip archive with three files, extract them into a new folder. Within your new folder you should have “conda_env_v_1_0_0.yml” the conda environment setup file, “model.pkl” the trained model and “scoring_file_v_1_0_0.py” which contains an example of how to use the model.
@@ -37,6 +38,7 @@ jupyter notebook
 {% endhighlight %}
 
 The ‘fun’ part:
+
 After running the last command above, you should see a web browser window open. Within this window, navigate to the Jupyter Notebook that you have downloaded from here <a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Applying%20an%20Azure%20AutoML%20model%20to%20raster%20GIS%20data.ipynb">here</a>.
 
 Try running the first cell which imports all the necessary libraries. If this executes correctly your environment is probably set up correctly and you can move on to the second cell.
