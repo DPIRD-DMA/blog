@@ -308,7 +308,6 @@ with rasterio.Env():
 {% endhighlight %}
 
 You should now be able to navigate to the export location and drag the geotiff into QGIS to visualise it, hopefully it looks reasonable!
-<img src="{{ site.baseurl }}/path/to/img/toto.jpg">
 
 <img src="https://github.com/DPIRD-DMA/blog/blob/master/docs/images/blog_images/2021-04-28-Applying-an-Azure-AutoML-model-to-raster-GIS-data_image_1.png?raw=true" width="500">
 
