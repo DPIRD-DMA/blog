@@ -20,7 +20,7 @@ Next, open a terminal and ‘cd’ into your extracted folder, then run the foll
 conda env create -f conda_env_v_1_0_0.yml
 {% endhighlight %}
 
-Your environment now contains all of the Azure specific ML libraries, however you still need to update some of packages and add a couple extra libraries.
+Your environment now contains all of the Azure specific ML libraries, however you still need to add a couple extra libraries.
 Run the following commands one by one to finish off the install:
 
 {% highlight console %}
@@ -39,7 +39,7 @@ jupyter notebook
 
 The ‘fun’ part:
 
-After running the last command above, you should see a web browser window open. Within this window, navigate to the Jupyter Notebook that you have downloaded from here <a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Applying%20an%20Azure%20AutoML%20model%20to%20raster%20GIS%20data.ipynb">here</a>.
+After running the last command above, you should see a web browser window open. Within this window, navigate to the Jupyter Notebook that you have downloaded from <a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Applying%20an%20Azure%20AutoML%20model%20to%20raster%20GIS%20data.ipynb">here</a>.
 
 Try running the first cell which imports all the necessary libraries. If this executes correctly your environment is probably set up correctly and you can move on to the second cell.
 
@@ -309,7 +309,7 @@ with rasterio.Env():
         dst.write(preds_reshaped.astype(data_dtype), 1)
 {% endhighlight %}
 
-You should now be able to navigate to the export location and drag the geotiff into QGIS to visualise it, hopefully it looks reasonable!
+You should now be able to navigate to the export location and drag the geotiff into QGIS to visualise it, hopefully it looks reasonable! My output looked like this.
 
 <img src="https://github.com/DPIRD-DMA/blog/blob/master/docs/images/blog_images/2021-04-28-Applying-an-Azure-AutoML-model-to-raster-GIS-data_image_1.png?raw=true" width="500">
 
