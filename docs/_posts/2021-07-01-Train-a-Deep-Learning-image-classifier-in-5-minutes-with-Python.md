@@ -4,12 +4,12 @@ title: Train a Deep Learning image classifier in 5 minutes with Python
 ---
 Image classification is the process of assigning a label to an image. This guide will outline how to train a Deep Learning image classifier with a very small amount of code and with limited training data. The approach covered in this post is very powerful and, as such, I find myself using it frequently.
 
-<a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Image%20Classification.ipynb">link to notebook</a>
+<a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Deep%20Learning%20image%20classifier">link to notebook</a>
 
-Hardware:
+Hardware:<br>
 To follow this guide, you’re going to need two things, a computer running some form of Linux (I’m using and recommend Ubuntu 20.04) and a recent high-end NVIDIA graphics card (GTX 1060 6GB or better). If you meet these requirements then you are good to go. If not, your best bet is probably to try out Google Colab which offers a free GPU enabled virtual server.
 
-Environment setup:
+Environment setup:<br>
 At this stage, you are going to want to make sure your system is recognising your GPU. Fire up a terminal and type ‘nvidia-smi’. Assuming the GPU drivers are correctly installed, you should see something like this.
 
 <img src="https://github.com/DPIRD-DMA/blog/blob/master/docs/images/blog_images/2021-07-01-Train-a-Deep-Learning-image-classifier-in-5-minutes-with-Python-nvidia-smi.png?raw=true" width="500">
@@ -17,11 +17,12 @@ At this stage, you are going to want to make sure your system is recognising you
 If you are running Ubuntu 20.04, the system should have automatically installed the correct driver, assuming third-party drivers are enabled. If the terminal gives you an error then head over to the NVIDIA site and download and install the latest driver for your particular GPU.
 Now that your driver is sorted, you are going to need to install ‘conda’ and then create a new environment with fastai v2 and jupyter notebook installed. The process to do this changes from time to time so head over to the fastai <a href="https://github.com/fastai/fastai">github page</a> to check the latest setup instructions.  
 
-Getting data:
+Getting data:<br>
 To train your Deep Learning model you will need to supply the model with some manually labelled data. The classic example here is training a model to classify photos of cats and dogs, however, in the last couple of years, this task has become almost too easy. So instead you will train your model to distinguish between ten different breeds of dogs, a significantly harder task. Fortunately, this dataset already exists. It is called ‘Imagewoof’ and you can <a href="https://github.com/fastai/imagenette">download it here</a>, go ahead and download the “320 px download” version and extract the archive. Within the extracted folder, open up the ‘train’ subfolder. Within the ‘train’ folder you will note that each further subfolder contains about one thousand images of one dog breed. There are ten such subfolders, so there are ten dog breeds and about ten thousand photos in total.
 
-Start running the code:
-Head over to our repo and download this notebook. Start jupyter from the terminal with the command ‘jupyter notebook’. You should now see a new tab in your default web browser, from within this tab, navigate to the downloaded notebook and open it.
+Start running the code:<br>
+Head over to our repo and download <a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Deep%20Learning%20image%20classifier">this notebook</a>. Start jupyter from the terminal with the command ‘jupyter notebook’. You should now see a new tab in your default web browser, from within this tab, navigate to the downloaded notebook and open it.
+
 
 Run the first cell, this pulls in the fastai library which contains all the tools you need for this notebook.
 
@@ -69,8 +70,6 @@ batch_tfms = [Normalize.from_stats(*imagenet_stats),
 
 This cell tells fastai how you would like to use the image data. This includes how to label the data (from the subfolder names) as well as how to split the images into a training set and validation set, and finally the Image Augmentations that you would like to use.
 {% highlight python %}
-
-# build a DataLoader
 data = ImageDataLoaders.from_folder(path, train=".", valid_pct=0.2,splitter=RandomSplitter(seed=42),
                                     bs=batch_size,
                                     item_tfms=item_tfms,
@@ -110,9 +109,7 @@ Now that the model has finished training the notebook, it will reload the best p
 
 The next cell loads up some random images from your validation set and displays the true labels along with the model predicted labels.	 Hopefully, most of these are correct!
 {% highlight python %}
-# reload the best model
 learn.load('quick_model')
-# save it to disk
 learn.export('models/quick_model.pkl')
 {% endhighlight %}
 
@@ -131,4 +128,6 @@ interp.plot_confusion_matrix(figsize=(6,6), dpi=60)
 
 <img src="https://github.com/DPIRD-DMA/blog/blob/master/docs/images/blog_images/2021-07-01-Train-a-Deep-Learning-image-classifier-in-5-minutes-with-Python-Confusion_matrix.png?raw=true" width="500">
 
-<a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Image%20Classification.ipynb">link to notebook</a>
+You are now finished, so maybe try loading up some of your own data and see how the model goes. In the next couple of months, I will write another post showing different ways I use these types of models in production.
+
+<a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Deep%20Learning%20image%20classifier">link to notebook</a>
