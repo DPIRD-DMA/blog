@@ -4,7 +4,7 @@ title: Train a Deep Learning image classifier in 5 minutes with Python
 ---
 Image classification is the process of assigning a label to an image. This guide will outline how to train a Deep Learning image classifier with a very small amount of code and with limited training data. The approach covered in this post is very powerful and, as such, I find myself using it frequently.
 
-<a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Deep%20Learning%20image%20classifier">link to notebook</a>
+<a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Deep%20Learning%20image%20classifier.ipynb">link to notebook</a>
 
 Hardware:<br>
 To follow this guide, you’re going to need two things, a computer running some form of Linux (I’m using and recommend Ubuntu 20.04) and a recent high-end NVIDIA graphics card (GTX 1060 6GB or better). If you meet these requirements then you are good to go. If not, your best bet is probably to try out Google Colab which offers a free GPU enabled virtual server.
@@ -21,7 +21,7 @@ Getting data:<br>
 To train your Deep Learning model you will need to supply the model with some manually labelled data. The classic example here is training a model to classify photos of cats and dogs, however, in the last couple of years, this task has become almost too easy. So instead you will train your model to distinguish between ten different breeds of dogs, a significantly harder task. Fortunately, this dataset already exists. It is called ‘Imagewoof’ and you can <a href="https://github.com/fastai/imagenette">download it here</a>, go ahead and download the “320 px download” version and extract the archive. Within the extracted folder, open up the ‘train’ subfolder. Within the ‘train’ folder you will note that each further subfolder contains about one thousand images of one dog breed. There are ten such subfolders, so there are ten dog breeds and about ten thousand photos in total.
 
 Start running the code:<br>
-Head over to our repo and download <a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Deep%20Learning%20image%20classifier">this notebook</a>. Start jupyter from the terminal with the command ‘jupyter notebook’. You should now see a new tab in your default web browser, from within this tab, navigate to the downloaded notebook and open it.
+Head over to our repo and download <a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Deep%20Learning%20image%20classifier.ipynb">this notebook</a>. Start jupyter from the terminal with the command ‘jupyter notebook’. You should now see a new tab in your default web browser, from within this tab, navigate to the downloaded notebook and open it.
 
 
 Run the first cell, this pulls in the fastai library which contains all the tools you need for this notebook.
@@ -130,4 +130,4 @@ interp.plot_confusion_matrix(figsize=(6,6), dpi=60)
 
 You are now finished, so maybe try loading up some of your own data and see how the model goes. In the next couple of months, I will write another post showing different ways I use these types of models in production.
 
-<a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Deep%20Learning%20image%20classifier">link to notebook</a>
+<a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Deep%20Learning%20image%20classifier.ipynb">link to notebook</a>
