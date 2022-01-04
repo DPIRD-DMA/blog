@@ -8,7 +8,9 @@ This script is one of a handful of tools I use for preprocessing raster data for
 
 It is worth noting that I have only run this code on Linux and macOS. I believe the multiprocess library (which this script uses extensively) operates slightly differently in different operating systems (beware Windows users).
 
-<a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Deep%20Learning%20image%20classifier.ipynb">link to notebook</a>
+Also thanks to Carlos Babativa Rodriguez for the help with this one.
+
+<a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/How%20to%20efficiently%20create%20millions%20of%20overlapping%20raster%20tiles.ipynb">link to notebook</a>
 
 The notebook starts by importing the necessary libraries. You will need to have all of these installed within your environment to run this notebook. In my particular case, I’m using Anaconda, so if my environment was lacking ‘tqdm’, I would head over to https://anaconda.org/conda-forge/tqdm and run the first install line on that page.
 conda install -c conda-forge tqdm
@@ -508,4 +510,4 @@ with pool:
 
 Now the notebook is completed, if you navigate to your output folder you will find a collection of subfolders. Each subfolder contains one row of tiles. It is broken up like this as many file navigators will start to slow down if an open folder contains many thousands of images.
 
-<a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/Deep%20Learning%20image%20classifier.ipynb">link to notebook</a>
+<a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/How%20to%20efficiently%20create%20millions%20of%20overlapping%20raster%20tiles.ipynb">link to notebook</a>
