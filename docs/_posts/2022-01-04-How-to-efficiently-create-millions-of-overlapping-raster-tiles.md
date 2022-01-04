@@ -12,8 +12,12 @@ Also thanks to Carlos Babativa Rodriguez for the help with this one.
 
 <a class="jn" href="https://github.com/DPIRD-DMA/blog/blob/master/notebooks/How%20to%20efficiently%20create%20millions%20of%20overlapping%20raster%20tiles.ipynb">link to notebook</a>
 
-The notebook starts by importing the necessary libraries. You will need to have all of these installed within your environment to run this notebook. In my particular case, I’m using Anaconda, so if my environment was lacking ‘tqdm’, I would head over to https://anaconda.org/conda-forge/tqdm and run the first install line on that page.
+The notebook starts by importing the necessary libraries. You will need to have all of these installed within your environment to run this notebook. In my particular case, I’m using Anaconda, so if my environment was lacking ‘tqdm’, I would head over to <a href="https://anaconda.org/conda-forge/tqdm">https://anaconda.org/conda-forge/tqdm</a> and run the first install line on that page.
+
+{% highlight shell_session %}
 conda install -c conda-forge tqdm
+{% endhighlight %}
+
 Keep in mind you should avoid mixing conda channels, so either stick to the default channel for all your third party installs or stick to the ‘forge’ channel. If you mix channels you may end up breaking your environment, ask me how I know...
 
 {% highlight python %}
