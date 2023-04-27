@@ -47,14 +47,14 @@ With glob, you can quickly find all files in a directory that match a certain pa
 
 {% highlight python %}
 for file in my_path.glob("*.txt"):
-print(file)
+  print(file)
 {% endhighlight %}
 
 If you need to search in subdirectories too, just use rglob:
 
 {% highlight python %}
 for file in my_path.rglob("*.txt"):
-print(file)
+  print(file)
 {% endhighlight %}
 
 Who knew pattern matching could be so easy and delightful? 🤩
@@ -67,7 +67,7 @@ import glob
 
 pattern = os.path.join("my_folder", "my_subfolder", "*.txt")
 for file in glob.glob(pattern):
-print(file)
+  print(file)
 {% endhighlight %}
 
 It gets the job done, but it's more verbose and less intuitive than using pathlib.
