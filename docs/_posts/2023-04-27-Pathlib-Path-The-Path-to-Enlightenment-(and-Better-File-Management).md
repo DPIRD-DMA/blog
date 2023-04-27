@@ -4,13 +4,15 @@ title: Pathlib.Path - The Path to Enlightenment (and Better File Management)
 ---
 Greetings, fellow code warriors! Today, I come to you with an embarrassing confession: I've been doing it all wrong. And by "it," I mean using strings for file paths like someone who's never tasted the sweet, sweet nectar of object-oriented goodness. 🙈 But fear not, for I have seen the light, and that light is called pathlib.Path. So buckle up, my friends, as I guide you through this wonderful world of file management with Python's pathlib.Path, while simultaneously questioning my life choices and reminiscing about the old ways. 😅
 
-Pathlib.Path: The Hero We Deserve
+
+**Pathlib.Path: The Hero We Deserve**
 
 Once upon a time, in a land where strings ruled file paths, chaos reigned. We were constantly plagued by slashes, backslashes, and many an os.path.join(). But then, like a beacon of hope, pathlib emerged, offering salvation to those who dared to dream of a better way.
 
 Introduced in Python 3.4, pathlib.Path is an object-oriented approach to dealing with file paths. It provides a more intuitive, efficient, and cross-platform solution for working with paths compared to traditional string manipulation. Say goodbye to the Dark Ages, folks!
 
-A Path Less Traveled
+
+**A Path Less Traveled**
 
 To start our journey towards file management enlightenment, let's first import the Path class from the pathlib module:
 
@@ -36,7 +38,8 @@ my_path = os.path.join("my_folder", "my_subfolder", "my_file.txt")
 
 Sure, it works, but it's nowhere near as elegant or fun as using pathlib.Path.
 
-Globbing All the Way
+
+**Globbing All the Way**
 
 Now that we've got the basics down, let's talk about pathlib's glob and rglob methods. They are here to make pattern-based file searching a breeze.
 
@@ -94,7 +97,8 @@ Old way: os.path.exists(my_path)
 
 And that's just the tip of the iceberg, folks!
 
-In Conclusion
+
+**In Conclusion**
 
 Using pathlib.Path over strings for file paths is like discovering a world where unicorns frolic, and your code is free from the tyranny of string concatenation. It's simply magical. So, join me in embracing this new world order, and let's leave our string-based file path woes behind. After all, if a mere mortal like me can see the light, so can you!
 
