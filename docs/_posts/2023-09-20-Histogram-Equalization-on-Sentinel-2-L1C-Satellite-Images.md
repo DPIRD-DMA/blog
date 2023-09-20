@@ -67,7 +67,7 @@ def histogram_equalization(array):
 
 ### Looping Through Bands
 
-Then we loop through each band, applying histogram equalization. Because clouds aren't going to equalize themselves, you know.
+Then we loop through each band, applying histogram equalization.
 
 {% highlight python %}
 rgb_stack = []
@@ -112,12 +112,12 @@ with rio.open(output_dir / f'{s2_l1c_dir.stem}_RGB.tif', 'w', **meta) as dst:
     dst.write(rgb_stack)
 {% endhighlight %}
 
-## Before and After Screenshots
+## Before and After
 
-Before Equalization             |  After Equalization
-:-------------------------:|:-------------------------:
-!<img src="https://github.com/DPIRD-DMA/blog/blob/master/docs/images/blog_images/2023-09-20-Histogram-Equalization-on-Sentinel-2-L1C-Satellite-Images_1.png?raw=true" width="1850">
-  |  !<img src="https://github.com/DPIRD-DMA/blog/blob/master/docs/images/blog_images/2023-09-20-Histogram-Equalization-on-Sentinel-2-L1C-Satellite-Images_2.png?raw=true" width="1850">
+Before Equalization
+<img src="https://github.com/DPIRD-DMA/blog/blob/master/docs/images/blog_images/2023-09-20-Histogram-Equalization-on-Sentinel-2-L1C-Satellite-Images_1.png?raw=true" width="1850">
+After Equalization
+<img src="https://github.com/DPIRD-DMA/blog/blob/master/docs/images/blog_images/2023-09-20-Histogram-Equalization-on-Sentinel-2-L1C-Satellite-Images_2.png?raw=true" width="1850">
 
 
 Notice how you can see both clouds and land features clearly in the equalized image. So the next time clouds crash your image party, you know how to make them behave!
