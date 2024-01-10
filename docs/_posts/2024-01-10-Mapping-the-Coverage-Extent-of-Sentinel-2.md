@@ -2,7 +2,6 @@
 layout: post
 title: Mapping the Coverage Extent of Sentinel-2
 ---
-## Introduction
 
 The Sentinel-2 satellite constellation plays a pivotal role in remote sensing and data science, especially in monitoring terrestrial environments. However, it faces challenges with inconsistent data coverage over oceanic regions, particularly at the edges of its coverage. This inconsistency poses difficulties for marine and coastal research, particularly in time series analysis. To mitigate this issue, we've developed a Python tool that leverages the Microsoft Planetary Computer API. This tool calculates and visualises the global capture extent of Sentinel-2 by processing and amalgamating extent polygons into a global raster. The resulting raster provides a pixel-wise representation of observation frequency, aiding researchers and analysts in navigating the challenges of data coverage irregularities.
 
@@ -21,7 +20,7 @@ Global Sentinel-2 coverage heatmap for 2023
 
 ### Installation and Usage
 
-Setting up the tool is simple. Ensure Python is installed, then install the required dependencies via pip. The tool can then be cloned and run locally or on the Planetary Computer Hub, with optional arguments for start and end years, and the desired output raster resolution.
+Setting up the tool is simple. Ensure Python is installed, then install the required dependencies via pip. The tool can then be git cloned and run locally or on the Planetary Computer Hub, with optional arguments for start and end years, and the desired output raster resolution.
 
 Basic usage example:
 {% highlight python %}
@@ -34,7 +33,7 @@ raster_path = build_revisit_raster()
 
 ### Try It Out
 
-Explore the tool on GitHub: [Sentinel-2 Capture Frequency Tool on GitHub](https://github.com/DPIRD-DMA/Sentinel-2-capture-frequency).
+Explore the tool: [Sentinel-2 Capture Frequency Tool on GitHub](https://github.com/DPIRD-DMA/Sentinel-2-capture-frequency).
 
 
 ### Acknowledgements
