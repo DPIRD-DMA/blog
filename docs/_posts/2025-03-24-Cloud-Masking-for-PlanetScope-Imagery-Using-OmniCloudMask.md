@@ -37,9 +37,10 @@ Recently [NASA has been using OCM](https://github.com/nasa-nccs-hpda/vhr-cloudma
 
 Installation is straightforward:
 
-```bash
+{% highlight bash %}
 pip install omnicloudmask
-```
+{% endhighlight %}
+
 
 Once installed, you can start processing your PlanetScope imagery immediately.
 
@@ -47,7 +48,7 @@ Once installed, you can start processing your PlanetScope imagery immediately.
 
 Here's a simple approach to mask a single PlanetScope image:
 
-```python
+{% highlight python %}
 from omnicloudmask import predict_from_array,load_multiband
 from functools import partial
 from pathlib import Path
@@ -74,7 +75,7 @@ prediction = predict_from_array(rgn_data)
 profile.update(count=1, dtype='uint8')
 with rio.open("planetscope_cloud_mask.tif", 'w', **profile) as dst:
     dst.write(prediction.astype('uint8'))
-```
+{% endhighlight %}
 
 The resulting mask will have these class values:
 
@@ -87,7 +88,7 @@ The resulting mask will have these class values:
 
 For batch processing
 
-```python
+{% highlight python %}
 from pathlib import Path
 from omnicloudmask import predict_from_load_func, load_multiband
 from functools import partial
@@ -113,13 +114,13 @@ prediction_paths = predict_from_load_func(
     )
 
 print(f"Cloud masks saved to: {prediction_paths}")
-```
+{% endhighlight %}
 
 ## Advanced Configuration for GPU Acceleration
 
 If you're processing large volumes of imagery, OCM offers GPU acceleration options:
 
-```python
+{% highlight python %}
 # For NVIDIA GPUs
 prediction_paths = predict_from_load_func(
     scene_paths,
@@ -137,7 +138,7 @@ prediction_paths = predict_from_load_func(
     inference_dtype="bf16",     # Use BF16 precision if supported
     mosaic_device="cpu"         # Use CPU for patch merging (less VRAM intensive)
 )
-```
+{% endhighlight %}
 
 ## Conclusion
 
